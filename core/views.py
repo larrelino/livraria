@@ -2,10 +2,13 @@ from rest_framework.viewsets import ModelViewSet
 
 from core.models import Autor, Categoria, Editora, Livro
 from core.serializers import CategoriaSerializer, EditoraSerializer, AutorSerializer, LivroSerializer, LivroDetailSerializer
+#from rest_framework.permissions import IsAuthenticated
+
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
+    #permission_classes = [IsAuthenticated]
 
 class EditoraViewSet(ModelViewSet):
     queryset = Editora.objects.all()
@@ -22,5 +25,7 @@ class LivroViewSet(ModelViewSet):
         if self.action in ['list', 'retrieve']:
             return LivroDetailSerializer
         return LivroSerializer
+
+
 
 # Create your views here.
